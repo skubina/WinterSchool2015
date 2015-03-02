@@ -32,6 +32,11 @@ public class HalloWelt extends HttpServlet {
 		
 		PrintWriter meinWriter = response.getWriter();
 		
+		String meinParameter = request.getParameter("print");
+		if(meinParameter == null){
+			meinParameter = "";
+		}
+		
 		meinWriter.append("<html> \n");
 		
 			meinWriter.append("<head> \n");
@@ -41,8 +46,9 @@ public class HalloWelt extends HttpServlet {
 				meinWriter.append("Hallo Welt! \n");
 				meinWriter.append( (2 * 3) + "<br />" );
 				
-				meinWriter.append("<a href=\"http://localhost:8080/WinterSchool2015/HalloWelt\" >Link Name!</a>");
-				
+				meinWriter.append("<a href=\"HalloWelt?print=4\" >Print 4!</a> <br />");
+				meinWriter.append("<a href=\"HalloWelt?print=5\" >Print 5!</a> <br />");
+				meinWriter.append(meinParameter);
 				
 			meinWriter.append("</body> \n");
 			
