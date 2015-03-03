@@ -57,7 +57,9 @@ public class HalloWeltAppl extends HttpServlet {
 			int textField1Int = Integer.parseInt(textField1);
 			int textField2Int = Integer.parseInt(textField2);
 			
+			
 			meinCounter.setMeineZahl(textField1Int);
+			
 			
 			if(submitBtn.equals("add")){
 				
