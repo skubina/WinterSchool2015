@@ -67,7 +67,7 @@ public class HalloWelt extends HttpServlet {
 			meinWriter.append("<body> \n");
 				meinWriter.append("Hallo Welt! \n");
 				
-				meinWriter.append("<a href=\"HalloWelt?print=4\" >Print 4!</a> <br />");
+				meinWriter.append("<a href=\"HalloWelt.jsp?print=4\" >Print 4!</a> <br />");
 				meinWriter.append("<a href=\"HalloWelt?print=5\" >Print 5!</a> <br />");
 				meinWriter.append(meinString);
 				
