@@ -1,3 +1,4 @@
+<%@ page import="org.hslu.winterschool2015.beans.CounterBean" %>
 <html>
 
 	<head>
@@ -11,30 +12,27 @@
 		<%
 
 		
-		String meinString = (String) session.getAttribute("print");
+		CounterBean meinCounter = (CounterBean) session.getAttribute("counter");
 		
-		if(meinString == null){
-			meinString = "0";
+		if(meinCounter == null){
+			meinCounter = new CounterBean();
 		}
 	
 		String meinParameter = request.getParameter("print");
-		
 		if(meinParameter == null){
 			meinParameter = "0";
 		}
 		
 		int meinParameterInt = Integer.parseInt(meinParameter);
-		int meinStringInt = Integer.parseInt(meinString);
-		int meinErgebenis = meinParameterInt + meinStringInt;
-		
-		meinString = ( Integer.parseInt(meinParameter) +Integer.parseInt(meinString)) + "" ;
 	
-		session.setAttribute("print", meinString);
+		meinCounter.addValue(meinParameterInt);
+		
+		session.setAttribute("counter", meinCounter);
 
 				
 				out.append("<a href=\"HalloWelt.jsp?print=4\" >Print 4!</a> <br />");
 				out.append("<a href=\"HalloWelt.jsp?print=5\" >Print 5!</a> <br />");
-				out.append(meinString);
+				out.append(meinCounter.getMeineZahlString());
 
 		%>
 	
