@@ -37,7 +37,7 @@ public class HalloWelt extends HttpServlet {
 		String meinString = (String) session.getAttribute("print");
 		
 		if(meinString == null){
-			meinString = "";
+			meinString = "0";
 		}
 		
 		
@@ -45,10 +45,17 @@ public class HalloWelt extends HttpServlet {
 		String meinParameter = request.getParameter("print");
 		
 		if(meinParameter == null){
-			meinParameter = "";
+			meinParameter = "0";
 		}
 		
-		meinString = meinString + meinParameter;
+		int meinParameterInt = Integer.parseInt(meinParameter);
+		int meinStringInt = Integer.parseInt(meinString);
+		int meinErgebenis = meinParameterInt + meinStringInt;
+		
+		meinString = ( Integer.parseInt(meinParameter) +Integer.parseInt(meinString)) + "" ;
+		
+		
+		
 		session.setAttribute("print", meinString);
 		
 		PrintWriter meinWriter = response.getWriter();
