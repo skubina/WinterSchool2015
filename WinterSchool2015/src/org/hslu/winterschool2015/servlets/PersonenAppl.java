@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.hslu.winterschool2015.beans.PersonenBean;
+import org.hslu.winterschool2015.beans.PersonenListeBean;
 
 /**
  * Servlet implementation class PersonenAppl
@@ -33,6 +34,10 @@ public class PersonenAppl extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		
+		PersonenListeBean personenListe = (PersonenListeBean) session.getAttribute("personenListe");
+		if(personenListe == null){
+			personenListe = new PersonenListeBean();
+		}
 		
 		String vorname = request.getParameter("vorname");
 		String nachname = request.getParameter("nachname");
@@ -60,7 +65,10 @@ public class PersonenAppl extends HttpServlet {
 			person.setVorname(vorname);
 			person.setNachname(nachname);
 			
-			session.setAttribute("person", person);
+			personenListe.addPerson(person);
+			personenListe.buildPersonenListeHtml();
+			
+			session.setAttribute("personenListe", personenListe);
 			
 			response.sendRedirect("PersonenListeView.jsp");
 		}else{
