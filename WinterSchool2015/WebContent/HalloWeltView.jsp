@@ -19,7 +19,7 @@
 		</form>
 		
 		
-	<input type="text"  value="<jsp:getProperty property="meineZahlString"  name="counter" />" />
+	<jsp:getProperty property="meineZahlString"  name="counter" />
 	
 	</body>
 

@@ -43,8 +43,13 @@ public class HalloWeltAppl extends HttpServlet {
 			meinParameter = "0";
 		}
 		
-		int meinParameterInt = Integer.parseInt(meinParameter);
-		meinCounter.addValue(meinParameterInt);
+		try{
+			int meinParameterInt = Integer.parseInt(meinParameter);
+			meinCounter.addValue(meinParameterInt);
+		}catch (Exception e){
+			meinCounter.setMeineZahlString("Nur Zahlen als Eingabe gültig!");
+		}
+		
 		session.setAttribute("counter", meinCounter);
 
 		response.sendRedirect("HalloWeltView.jsp");
