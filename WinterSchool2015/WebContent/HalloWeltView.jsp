@@ -2,22 +2,21 @@
 <html>
 
 	<head>
-		<title>Nw File :)</title>
+		<title>New File :)</title>
 	</head>
 
 	<body>
 	
+	<jsp:useBean id="counter" class="org.hslu.winterschool2015.beans.CounterBean"  scope="session"  />
+	
 		Hallo Welt - JSP <br />
 		
-		<%
-
-		CounterBean meinCounter = (CounterBean) session.getAttribute("counter");
-	
-				out.append("<a href=\"HalloWeltAppl?print=4\" >Print 4!</a> <br />");
-				out.append("<a href=\"HalloWeltAppl?print=5\" >Print 5!</a> <br />");
-				out.append(meinCounter.getMeineZahlString());
-
-		%>
+		<a href="HalloWeltAppl?print=4" >Print 4!</a> <br />
+		<a href="HalloWeltAppl?print=5" >Print 5!</a> <br />
+		
+		
+		
+	<input type="text"  value="<jsp:getProperty property="meineZahlString"  name="counter" />" />
 	
 	</body>
 
