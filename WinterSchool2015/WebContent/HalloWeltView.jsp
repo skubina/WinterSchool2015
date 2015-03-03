@@ -11,9 +11,12 @@
 	
 		Hallo Welt - JSP <br />
 		
-		<a href="HalloWeltAppl?print=4" >Print 4!</a> <br />
-		<a href="HalloWeltAppl?print=5" >Print 5!</a> <br />
+
 		
+		<form action="HalloWeltAppl">
+			<input type="text" name="print"><br />
+			<input type="submit" value="Add Value"  name="submit" ><br />
+		</form>
 		
 		
 	<input type="text"  value="<jsp:getProperty property="meineZahlString"  name="counter" />" />
