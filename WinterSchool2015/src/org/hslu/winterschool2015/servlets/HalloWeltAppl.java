@@ -30,22 +30,53 @@ public class HalloWeltAppl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		HttpSession session = request.getSession(true);
-		
+
 		CounterBean meinCounter = (CounterBean) session.getAttribute("counter");	
 		if(meinCounter == null){
 			meinCounter = new CounterBean();
 		}
+		
 	
-		String meinParameter = request.getParameter("print");
-		if(meinParameter == null){
-			meinParameter = "0";
+		String submitBtn = request.getParameter("submit");
+		if(submitBtn == null){
+			submitBtn = "";
+		}
+		
+		String textField1 = request.getParameter("textField1");
+		if( textField1 == null){
+			 textField1 = "0";
+		}
+		
+		String textField2 = request.getParameter("textField2");
+		if( textField2 == null){
+			 textField2 = "0";
 		}
 		
 		try{
-			int meinParameterInt = Integer.parseInt(meinParameter);
-			meinCounter.addValue(meinParameterInt);
+			int textField1Int = Integer.parseInt(textField1);
+			int textField2Int = Integer.parseInt(textField2);
+			
+			meinCounter.setMeineZahl(textField1Int);
+			
+			if(submitBtn.equals("add")){
+				
+				meinCounter.addValue(textField2Int);
+				
+			} else if(submitBtn.equals("sub")){
+				
+				meinCounter.subValue(textField2Int);
+				
+			} else if(submitBtn.equals("mul")){
+				
+				meinCounter.mulValue(textField2Int);
+				
+			} else if(submitBtn.equals("div")){
+				
+				meinCounter.divValue(textField2Int);
+				
+			}
+			
 		}catch (Exception e){
 			meinCounter.setMeineZahlString("Nur Zahlen als Eingabe gültig!");
 		}

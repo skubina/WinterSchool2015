@@ -15,12 +15,24 @@ public class CounterBean {
 		
 	}
 	
+	public void divValue(int meineNeueZahl){
+		this.meineZahl = (int) ((double) this.meineZahl / (double) meineNeueZahl);
+		this.meineZahlString = meineZahl + "";
+	}
+	
+	public void mulValue(int meineNeueZahl){
+		this.meineZahl = this.meineZahl * meineNeueZahl;
+		this.meineZahlString = meineZahl + "";
+	}
+	
+	public void subValue(int meineNeueZahl){
+		this.meineZahl = this.meineZahl - meineNeueZahl;
+		this.meineZahlString = meineZahl + "";
+	}
 	
 	public void addValue(int meineNeueZahl){
-		
 		this.meineZahl = this.meineZahl + meineNeueZahl;
 		this.meineZahlString = meineZahl + "";
-		
 	}
 
 
