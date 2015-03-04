@@ -29,6 +29,7 @@ public class PersonenAppl extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		try {
 			this.doAll(request, response);
 		} catch (Exception e) {
