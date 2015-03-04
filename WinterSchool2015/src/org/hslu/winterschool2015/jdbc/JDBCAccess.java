@@ -22,9 +22,9 @@ public class JDBCAccess {
 	//Setzen der benötigten Zugangsdaten
 	public void setDBParms(){
 		dbDriverName = "com.mysql.jdbc.Driver";
-		dbURL = "jdbc:mysql://derbe-frisiert.com/d019e556";
-		dbUser = "d019e556";
-		dbPassword = "ss2014";	
+		dbURL = "jdbc:mysql://derbe-frisiert.com/d01d758a";
+		dbUser = "d01d758a";
+		dbPassword = "winterschool2015";	
 	}
 	
 	public void createConnection(){
