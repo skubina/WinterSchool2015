@@ -14,13 +14,30 @@ public class SqlTester {
 		
 		
 		//tester.addPerson("Klaus", "Freyburger", "567");
+		//tester.addPerson("Gordon", "Shumway", "Melmark");
+		//tester.addPerson("The", "Doctor", "Gallayfrey");
 		//tester.truncateTable();
 		
+		tester.removePerson(5);
 		
 		tester.printTable();
 	}
 	
-	
+	public void removePerson(int id){
+		
+		Connection dbConn = new JDBCAccess().getConnection();
+		
+		String sql = "DELETE FROM PERSONEN WHERE ID =" + id;
+		
+		try {
+			PreparedStatement myPrep = dbConn.prepareStatement(sql);
+			myPrep.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	public void truncateTable(){
 		Connection dbConn = new JDBCAccess().getConnection();
@@ -67,9 +84,10 @@ public class SqlTester {
 			ResultSet dbRes = myPrep.executeQuery();
 
 			while (dbRes.next()) {
-				System.out.println(dbRes.getString("VORNAME"));
-				System.out.println(dbRes.getString("NACHNAME"));
-				System.out.println(dbRes.getString("ADRESSE"));
+				System.out.println("ID: " 		+ dbRes.getInt("ID"));
+				System.out.println("VORNAME: " 	+ dbRes.getString("VORNAME"));
+				System.out.println("NACHNAME: " + dbRes.getString("NACHNAME"));
+				System.out.println("ADRESSE: " 	+ dbRes.getString("ADRESSE"));
 			}
 
 		} catch (SQLException e) {
