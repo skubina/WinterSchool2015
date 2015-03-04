@@ -13,10 +13,18 @@
 
 <jsp:useBean id="personenListe"  class="org.hslu.winterschool2015.beans.PersonenListeBean"   scope="session"  />
 
-	<jsp:getProperty property="personenListeHtml"  name="personenListe" /> <br />
+
+	<ul>
+	<jsp:getProperty property="personenListeHtml"  name="personenListe" /> 
+	</ul><br />
 	
 <br />
 <br />
+
+	<form action="PersonenAppl">
+		<input type="submit" name="clear" value="clear" />
+	</form>
+	
 	<a href="PersonenAppl">Weitere Person hinzufügen</a>
 
 </body>

@@ -43,6 +43,7 @@ public class PersonenAppl extends HttpServlet {
 		String nachname = request.getParameter("nachname");
 		String adresse = request.getParameter("adresse");
 		String submit = request.getParameter("submit");
+		String clear = request.getParameter("clear");
 		
 		if(vorname == null){
 			vorname = "";
@@ -56,8 +57,10 @@ public class PersonenAppl extends HttpServlet {
 		if(submit == null){
 			submit = "";
 		}
+		if(clear == null){
+			clear = "";
+		}
 		
-		System.out.println("Submit " + submit);
 		
 		if(submit.equals("Add Person")){
 			PersonenBean person = new PersonenBean();
@@ -71,6 +74,18 @@ public class PersonenAppl extends HttpServlet {
 			session.setAttribute("personenListe", personenListe);
 			
 			response.sendRedirect("PersonenListeView.jsp");
+		}else if (clear.equals("clear")){
+			
+			/*
+			personenListe.getPersonenListe().clear();
+			personenListe.buildPersonenListeHtml();
+			*/
+			
+			personenListe = new PersonenListeBean();
+			session.setAttribute("personenListe", personenListe);
+			
+			response.sendRedirect("PersonenListeView.jsp");
+			
 		}else{
 			response.sendRedirect("PersonenView.jsp");
 		}
