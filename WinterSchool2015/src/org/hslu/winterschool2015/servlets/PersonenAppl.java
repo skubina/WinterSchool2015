@@ -1,6 +1,8 @@
 package org.hslu.winterschool2015.servlets;
 
 import java.io.IOException;
+import java.util.LinkedList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -66,6 +68,7 @@ public class PersonenAppl extends HttpServlet {
 		String adresse = request.getParameter("adresse");
 		String submit = request.getParameter("submit");
 		String clear = request.getParameter("clear");
+		String  delete = request.getParameter("delete");
 		
 		if(vorname == null){
 			vorname = "";
@@ -82,7 +85,9 @@ public class PersonenAppl extends HttpServlet {
 		if(clear == null){
 			clear = "";
 		}
-		
+		if(delete == null){
+			delete = "";
+		}
 		
 		if(submit.equals("Add Person")){
 			PersonenBean person = new PersonenBean();
@@ -97,17 +102,19 @@ public class PersonenAppl extends HttpServlet {
 			
 			response.sendRedirect("PersonenListeView.jsp");
 		}else if (clear.equals("clear")){
-			
-			/*
-			personenListe.getPersonenListe().clear();
-			personenListe.buildPersonenListeHtml();
-			*/
-			
+
 			personenListe = new PersonenListeBean();
 			session.setAttribute("personenListe", personenListe);
 			
 			response.sendRedirect("PersonenListeView.jsp");
+		}else if(!delete.equals("")){
 			
+			LinkedList<PersonenBean> tempPersonen = personenListe.getPersonenListe();
+			tempPersonen.remove(Integer.parseInt(delete));
+			personenListe.buildPersonenListeHtml();
+			
+			session.setAttribute("personenListe", personenListe);
+			response.sendRedirect("PersonenListeView.jsp");
 		}else{
 			response.sendRedirect("PersonenView.jsp");
 		}

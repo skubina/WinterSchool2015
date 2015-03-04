@@ -19,6 +19,7 @@ public class PersonenListeBean {
 		Iterator<PersonenBean> personenListeIter = personenListe.iterator();
 		
 		PersonenBean tempPerson;
+		int counter = 0;
 		
 		while(personenListeIter.hasNext()){	
 			tempPerson = personenListeIter.next();
@@ -27,7 +28,12 @@ public class PersonenListeBean {
 			this.personenListeHtml = this.personenListeHtml + "<td>" + tempPerson.getVorname() + "</td>";
 			this.personenListeHtml = this.personenListeHtml + "<td>" +  tempPerson.getNachname() + "</td>";
 			this.personenListeHtml = this.personenListeHtml + "<td>" +  tempPerson.getAdresse() + "</td>";
+			this.personenListeHtml = this.personenListeHtml + "<td>" +
+			"<a href=\"PersonenAppl?delete=" + counter + "\"> delete </a> " 
+					+"</td>";
 			this.personenListeHtml = this.personenListeHtml + "</tr>";
+			
+			counter++;
 		}
 		
 	}

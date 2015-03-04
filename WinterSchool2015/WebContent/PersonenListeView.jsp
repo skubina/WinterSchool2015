@@ -25,6 +25,9 @@
 		<th>
 			Adresse
 		</th>
+		<th>
+			
+		</th>
 	</tr>
 	<jsp:getProperty property="personenListeHtml"  name="personenListe" /> 
 	</table><br />
