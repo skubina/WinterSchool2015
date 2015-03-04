@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<form action="PersonenAppl">
+	<form action="PersonenAppl" method="post">
 		<input type="text"  name="vorname" /> Vorname <br />
 		<input type="text"  name="nachname" /> Nachname <br />
 		<input type="text"  name="adresse" /> Adresse <br />

@@ -23,13 +23,35 @@ public class PersonenAppl extends HttpServlet {
      */
     public PersonenAppl() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			this.doAll(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}	
+	
 	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			this.doAll(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+    public void doAll(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
 		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession(true);
@@ -89,15 +111,7 @@ public class PersonenAppl extends HttpServlet {
 		}else{
 			response.sendRedirect("PersonenView.jsp");
 		}
-		
-		
-	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+    }
 
 }

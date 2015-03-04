@@ -32,7 +32,7 @@
 <br />
 <br />
 
-	<form action="PersonenAppl">
+	<form action="PersonenAppl" method="post">
 		<input type="submit" name="clear" value="clear" />
 	</form>
 	
