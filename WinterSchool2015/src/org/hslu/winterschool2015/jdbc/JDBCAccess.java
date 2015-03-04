@@ -1,33 +1,29 @@
 package org.hslu.winterschool2015.jdbc;
 
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class JDBCAccess {
 	String dbDriverName;
-	String dbURL; 
-	String dbUser; 
+	String dbURL;
+	String dbUser;
 	String dbPassword;
-	//String dbSchema;
+	// String dbSchema;
 	Connection dbConn = null;
-	
-	public JDBCAccess(){
+
+	public JDBCAccess() {
 		this.setDBParms();
 		this.createConnection();
-		//this.setSchema();
+		// this.setSchema();
 	}
-	//Setzen der benötigten Zugangsdaten
-	public void setDBParms(){
-		dbDriverName = "com.mysql.jdbc.Driver";
-		dbURL = "jdbc:mysql://derbe-frisiert.com/d01d758a";
-		dbUser = "d01d758a";
-		dbPassword = "winterschool2015";	
+
+	// Setzen der benötigten Zugangsdaten
+	public void setDBParms() {
+		
 	}
-	
-	public void createConnection(){
+
+	public void createConnection() {
 		Class<?> driverClass;
 		try {
 			driverClass = Class.forName(dbDriverName);
@@ -41,11 +37,10 @@ public class JDBCAccess {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
-	public Connection getConnection(){
+
+	public Connection getConnection() {
 		return dbConn;
 	}
 }
