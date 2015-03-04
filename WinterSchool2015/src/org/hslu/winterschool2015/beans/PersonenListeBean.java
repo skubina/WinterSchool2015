@@ -14,6 +14,7 @@ public class PersonenListeBean {
 	
 	
 	public void buildPersonenListeHtml(){
+		this.personenListeHtml = "";
 		
 		Iterator<PersonenBean> personenListeIter = personenListe.iterator();
 		
@@ -22,10 +23,11 @@ public class PersonenListeBean {
 		while(personenListeIter.hasNext()){	
 			tempPerson = personenListeIter.next();
 			
-			this.personenListeHtml = this.personenListeHtml + "<li>" + tempPerson.getVorname() + "</li>";
-			this.personenListeHtml = this.personenListeHtml + "<li>" +  tempPerson.getNachname() + "</li>";
-			this.personenListeHtml = this.personenListeHtml + "<li>" +  tempPerson.getAdresse() + "</li>";
-			
+			this.personenListeHtml = this.personenListeHtml + "<tr>";
+			this.personenListeHtml = this.personenListeHtml + "<td>" + tempPerson.getVorname() + "</td>";
+			this.personenListeHtml = this.personenListeHtml + "<td>" +  tempPerson.getNachname() + "</td>";
+			this.personenListeHtml = this.personenListeHtml + "<td>" +  tempPerson.getAdresse() + "</td>";
+			this.personenListeHtml = this.personenListeHtml + "</tr>";
 		}
 		
 	}

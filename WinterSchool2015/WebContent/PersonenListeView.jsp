@@ -14,9 +14,20 @@
 <jsp:useBean id="personenListe"  class="org.hslu.winterschool2015.beans.PersonenListeBean"   scope="session"  />
 
 
-	<ul>
+	<table border="solid">
+	<tr>
+		<th>
+			Vorname
+		</th>
+		<th>
+			Nachname
+		</th>
+		<th>
+			Adresse
+		</th>
+	</tr>
 	<jsp:getProperty property="personenListeHtml"  name="personenListe" /> 
-	</ul><br />
+	</table><br />
 	
 <br />
 <br />
