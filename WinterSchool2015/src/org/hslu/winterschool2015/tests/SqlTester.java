@@ -14,10 +14,27 @@ public class SqlTester {
 		
 		
 		//tester.addPerson("Klaus", "Freyburger", "567");
-		
+		//tester.truncateTable();
 		
 		
 		tester.printTable();
+	}
+	
+	
+	
+	public void truncateTable(){
+		Connection dbConn = new JDBCAccess().getConnection();
+		
+		String sql = "TRUNCATE PERSONEN";
+		
+		try {
+			PreparedStatement myPrep = dbConn.prepareStatement(sql);
+			myPrep.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void addPerson(String vorname, String nachname, String adresse){
