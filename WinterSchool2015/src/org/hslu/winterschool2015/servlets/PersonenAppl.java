@@ -1,7 +1,6 @@
 package org.hslu.winterschool2015.servlets;
 
 import java.io.IOException;
-import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.hslu.winterschool2015.beans.PersonenBean;
-import org.hslu.winterschool2015.beans.PersonenListeBean;
 
 /**
  * Servlet implementation class PersonenAppl
@@ -59,15 +57,17 @@ public class PersonenAppl extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		
-		PersonenListeBean personenListe = (PersonenListeBean) session.getAttribute("personenListe");
-		if(personenListe == null){
-			personenListe = new PersonenListeBean();
+		PersonenBean personenBean = (PersonenBean) session.getAttribute("personenBean");
+		if(personenBean == null){
+			personenBean = new PersonenBean();
 		}
 		
+		//PersonenView
 		String vorname = request.getParameter("vorname");
 		String nachname = request.getParameter("nachname");
 		String adresse = request.getParameter("adresse");
 		String submit = request.getParameter("submit");
+		//PersonenListeView
 		String clear = request.getParameter("clear");
 		String  delete = request.getParameter("delete");
 		
@@ -91,30 +91,29 @@ public class PersonenAppl extends HttpServlet {
 		}
 		
 		if(submit.equals("Add Person")){
-			PersonenBean person = new PersonenBean();
-			person.setAdresse(adresse);
-			person.setVorname(vorname);
-			person.setNachname(nachname);
 			
-			personenListe.addPerson(person);
-			personenListe.buildPersonenListeHtml();
+			personenBean.setAdresse(adresse);
+			personenBean.setVorname(vorname);
+			personenBean.setNachname(nachname);
+			personenBean.addPerson();
 			
-			session.setAttribute("personenListe", personenListe);
+			personenBean.printTable();
 			
+			session.setAttribute("personenBean", personenBean);
 			response.sendRedirect("PersonenListeView.jsp");
 		}else if (clear.equals("clear")){
 
-			personenListe = new PersonenListeBean();
-			session.setAttribute("personenListe", personenListe);
+			personenBean.truncateTable();
+			personenBean.printTable();
 			
+			session.setAttribute("personenBean", personenBean);
 			response.sendRedirect("PersonenListeView.jsp");
 		}else if(!delete.equals("")){
 			
-			LinkedList<PersonenBean> tempPersonen = personenListe.getPersonenListe();
-			tempPersonen.remove(Integer.parseInt(delete));
-			personenListe.buildPersonenListeHtml();
+			personenBean.removePerson(Integer.parseInt(delete));
+			personenBean.printTable();
 			
-			session.setAttribute("personenListe", personenListe);
+			session.setAttribute("personenBean", personenBean);
 			response.sendRedirect("PersonenListeView.jsp");
 		}else{
 			response.sendRedirect("PersonenView.jsp");

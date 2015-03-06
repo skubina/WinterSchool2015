@@ -21,6 +21,9 @@ public class SqlTester {
 		tester.removePerson(5);
 		
 		tester.printTable();
+
+		
+		
 	}
 	
 	public void removePerson(int id){
