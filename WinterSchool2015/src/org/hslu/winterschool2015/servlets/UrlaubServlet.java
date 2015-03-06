@@ -47,6 +47,7 @@ public class UrlaubServlet extends HttpServlet {
 		String ziel 	= request.getParameter("ziel");
 		String rating 	= request.getParameter("rating");
 		String add 		= request.getParameter("add");
+		String clear 	= request.getParameter("clear");
 		//Parameter de-null-ifien
 		if(ziel == null){
 			ziel = "";
@@ -69,8 +70,15 @@ public class UrlaubServlet extends HttpServlet {
 			session.setAttribute("urlaub", urlaub);
 			//Sendet Client an die url ./UrlaubView.jsp
 			response.sendRedirect("UrlaubView.jsp");
+		}else if (clear != null){
+			
+			//"löscht" alte UrlaubBean
+			urlaub = new UrlaubBean();
+			//Setzt leere UrlaubBean in Session
+			session.setAttribute("urlaub", urlaub);
+			//Sendet uns zurück zur Anzeige Seite
+			response.sendRedirect("UrlaubView.jsp");
 		}
-		
 		else {
 			response.sendRedirect("AddView.jsp");
 		}
